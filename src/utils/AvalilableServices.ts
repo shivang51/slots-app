@@ -11,7 +11,7 @@ interface IAvailableService {
 export namespace AvailableServices {
   export const Saloon: IAvailableService = {
     id: 0,
-    name: "Saloon",
+    name: "Salon",
     requires_gender: true,
     icon: Icons.saloon,
     icon_150: Icons.serviceSaloon,

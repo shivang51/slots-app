@@ -130,6 +130,7 @@ const StarRating = (props: { rating: number }) => {
       <View style={{ flexDirection: "row" }}>
         {Array.from(Array(Math.floor(props.rating)).keys()).map((v, ind) => (
           <Icon
+            key={ind}
             style={{ marginHorizontal: 4, color: "orange" }}
             name={"star"}
             size={15}
@@ -327,6 +328,13 @@ const ServiceDetails = () => {
           data={[DummyPackage, DummyPackage, DummyPackage]}
           serviceData={params.serviceData}
         />
+
+        <Text style={{ marginTop: 8, fontSize: 20, padding: 8 }}>Reviews</Text>
+        <Text
+          style={{ paddingHorizontal: 16, fontWeight: "bold", fontSize: 15 }}
+        >
+          No Reviews Found
+        </Text>
       </View>
     </View>
   );

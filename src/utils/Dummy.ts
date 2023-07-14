@@ -63,7 +63,7 @@ export let DummyServices: Services = [
       open: Date(),
       close: Date(),
     },
-    type: "hoboo",
+    type: "salon",
     rating: 4.5,
   },
   {
@@ -83,7 +83,7 @@ export let DummyServices: Services = [
       open: Date(),
       close: Date(),
     },
-    type: "hoboo",
+    type: "salon",
     rating: 4.5,
   },
   {
@@ -103,7 +103,7 @@ export let DummyServices: Services = [
       open: Date(),
       close: Date(),
     },
-    type: "hoboo",
+    type: "salon",
     rating: 4.5,
   },
   {
@@ -123,7 +123,7 @@ export let DummyServices: Services = [
       open: Date(),
       close: Date(),
     },
-    type: "hoboo",
+    type: "salon",
     rating: 4.5,
   },
   {
@@ -143,7 +143,7 @@ export let DummyServices: Services = [
       open: Date(),
       close: Date(),
     },
-    type: "hoboo",
+    type: "salon",
     rating: 4.5,
   },
 ];
@@ -151,7 +151,7 @@ export let DummyServices: Services = [
 export const DummyEmployees: IEmployee[] = [
   {
     id: 0,
-    name: "Harsh Banbjare",
+    name: "Harsh Banjare",
     imageURL:
       "https://static.thehoneycombers.com/wp-content/uploads/sites/6/2021/09/barber-shops-handsome-factory.jpeg",
   },

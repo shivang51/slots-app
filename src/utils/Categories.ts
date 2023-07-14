@@ -2,11 +2,11 @@ import Icons from "./Icons";
 
 export const Categories = [
   {
-    name: "Mens Saloon",
+    name: "Mens Salon",
     icon: Icons.saloonMen,
   },
   {
-    name: "Womens Saloon",
+    name: "Womens Salon",
     icon: Icons.saloonWomen,
   },
   {

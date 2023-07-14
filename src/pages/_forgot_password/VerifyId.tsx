@@ -7,13 +7,16 @@ import {
   TextInputKeyPressEventData,
 } from "react-native";
 import React, { Ref, createRef, useCallback, useEffect, useState } from "react";
-import { useNavigation } from "@react-navigation/native";
-import { ForgotPasswordStackNavigation } from "./FPIndex";
+import {
+  StackActions,
+  useNavigation,
+  useRoute,
+} from "@react-navigation/native";
 import { Colors, GStyles } from "@/utils/GlobalStyles";
 import PrimaryButton from "@/components/PrimaryButton";
 import TextBox from "@/components/TextBox";
 import TextButton from "@/components/TextButton";
-import DropShadow from "react-native-drop-shadow";
+import { ForgotPasswordStackNavigation } from "@pages/_forgot_password/FPIndex";
 
 export const FORGOT_PASSWORD_PAGE_1_ID: string = "/email";
 
@@ -21,11 +24,18 @@ interface IForm {
   otp: string;
 }
 
+interface IParams {
+  type: "merchant";
+}
+
 const VerifyId = () => {
+  const route = useRoute();
+  const params = route.params ? (route.params as IParams) : null;
+
   const [form, setForm] = useState<IForm>({ otp: "______" });
 
   const [focusNodes, setFocusNodes] = useState<Array<TextInput | undefined>>(
-    Array.from({ length: 6 }, (_, __) => undefined)
+    Array.from({ length: 6 }, (_, __) => undefined),
   );
 
   const navigator = useNavigation<ForgotPasswordStackNavigation>();
@@ -52,7 +62,7 @@ const VerifyId = () => {
 
   const onKeyPress = (
     index: number,
-    evt: NativeSyntheticEvent<TextInputKeyPressEventData>
+    evt: NativeSyntheticEvent<TextInputKeyPressEventData>,
   ) => {
     if (evt.nativeEvent.key === "Backspace" && index != 0) {
       focusNodes[index - 1]?.focus();
@@ -91,8 +101,9 @@ const VerifyId = () => {
                 containerStyle={{
                   alignSelf: "flex-start",
                   flexDirection: "column",
+                  ...shadow,
                 }}
-                style={{ textAlign: "center", ...shadow }}
+                style={{ textAlign: "center" }}
                 placeholder={"_"}
                 name={`otp_${k}`}
                 value={form.otp[k] == "_" ? "" : form.otp[k]}
@@ -110,7 +121,6 @@ const VerifyId = () => {
           onPress={() => {
             navigator.navigate("new_password");
           }}
-          margin_top={8}
         />
       </View>
       <TextButton label="Didn’t Recieve? Resend Code" />

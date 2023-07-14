@@ -28,7 +28,7 @@ const TimeSlot = (props: {
     if (h == 0) h = 12;
 
     const hStr = h < 10 ? `0${h}` : h.toString();
-    return hStr + (h < 12 ? " AM" : " PM");
+    return hStr + (hour < 12 ? " AM" : " PM");
   };
 
   useEffect(() => {
