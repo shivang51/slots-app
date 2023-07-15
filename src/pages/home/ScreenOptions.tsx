@@ -16,7 +16,7 @@ interface IProps {
 
 export const homeScreenOptions: (
   navigation: any,
-
+  // isTabbarHome:
   fontLoaded: boolean,
   props: IProps,
 ) => BottomTabNavigationOptions = (
@@ -71,13 +71,12 @@ export const homeScreenOptions: (
   },
   tabBarShowLabel: false,
   tabBarStyle: {
-    backgroundColor: "rgba(102, 102, 102, 0.18)",
-    marginHorizontal: 8,
+    backgroundColor: "rgba(230, 230, 230, 1)",
+    marginHorizontal: 16,
+    marginVertical: 4,
+    marginTop: 0,
     borderRadius: 8,
     position: "absolute",
-    left: 0,
-    right: 0,
-    bottom: 2,
     elevation: 0,
   },
 });

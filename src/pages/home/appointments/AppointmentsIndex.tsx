@@ -5,9 +5,18 @@ import Upcoming from "./Upcoming";
 import Pending from "./Pending";
 import Previous from "./Previous";
 import { Colors } from "@/utils/GlobalStyles";
+import { useHomeState } from "@pages/home/HomeState";
+import { useFocusEffect } from "@react-navigation/native";
 
 const AppointmentsNavgation = createMaterialTopTabNavigator();
 const AppointmentsIndex = () => {
+  const { setState } = useHomeState();
+
+  useFocusEffect(
+    React.useCallback(() => {
+      setState({ isDashboardHome: true });
+    }, []),
+  );
   return (
     <AppointmentsNavgation.Navigator
       screenOptions={{

@@ -10,11 +10,9 @@ import { Colors } from "@utils/GlobalStyles";
 import { DummyPackage, DummyPackageTags, DummyTags } from "@utils/Dummy";
 import TagsLine from "@components/TagsLine";
 import { Image } from "expo-image";
-import { white } from "react-native-paper/lib/typescript/src/styles/themes/v2/colors";
-import { backgroundColor } from "react-native-calendars/src/style";
 import { IPackage, IService } from "@/types/common_types";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import { TabNavigationProp } from "@pages/_home/HomeTabNavigation";
+import { HomeDashboardStackScreenProps } from "@/types/route_types";
 
 const Package = (props: {
   data: IPackage;
@@ -101,22 +99,32 @@ const Package = (props: {
   );
 };
 
-const PackageSelection = () => {
-  const navigation = useNavigation<TabNavigationProp>();
-  const route = useRoute();
-
-  const params = route.params as { serviceData: IService };
+const PackageSelection = ({
+  navigation,
+  route,
+}: HomeDashboardStackScreenProps<"PackageSelection">) => {
+  const params = route.params;
 
   return (
     <View style={styles.container}>
       <TagsLine tags={DummyPackageTags} />
       <Package
         data={DummyPackage}
-        onPress={() => navigation.navigate("book_appointment")}
+        onPress={() =>
+          navigation.navigate("BookAppointment", {
+            packageData: DummyPackage,
+            serviceName: "Belle Curls",
+          })
+        }
       />
       <Package
         data={DummyPackage}
-        onPress={() => navigation.navigate("book_appointment")}
+        onPress={() =>
+          navigation.navigate("BookAppointment", {
+            packageData: DummyPackage,
+            serviceName: "Belle Curls",
+          })
+        }
       />
     </View>
   );

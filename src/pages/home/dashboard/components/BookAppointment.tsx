@@ -12,7 +12,7 @@ import { DummyEmployees } from "@utils/Dummy";
 import PrimaryButton from "@components/PrimaryButton";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { useNavigation } from "@react-navigation/native";
-import { TabNavigationProp } from "@pages/_home/HomeTabNavigation";
+import { HomeDashboardStackScreenProps } from "@/types/route_types";
 
 const TimeSlot = (props: {
   id: number;
@@ -286,7 +286,9 @@ const Employees = (props: {
   );
 };
 
-const BookAppointment = () => {
+const BookAppointment = ({
+  navigation,
+}: HomeDashboardStackScreenProps<"BookAppointment">) => {
   const [selectedDate, setSelectedDate] = useState<string>("");
   const [selectedSlot, setSelectedSlot] = useState<string>("");
   const [appointmentMode, setAppointmentMode] =
@@ -299,11 +301,9 @@ const BookAppointment = () => {
   const buffer = new Date();
   buffer.setDate(current.getDate() + 31);
 
-  const navigation = useNavigation<TabNavigationProp>();
-
   return (
-    <ScrollView>
-      <View style={styles.container}>
+    <View style={styles.container}>
+      <ScrollView>
         <Calendar
           onDayPress={(day) => setSelectedDate(day.dateString)}
           theme={calenderTheme}
@@ -345,14 +345,14 @@ const BookAppointment = () => {
           <PrimaryButton
             onPress={() =>
               navigation.navigate(
-                forFriend ? "friends_details" : "confirm_appointment",
+                forFriend ? "FriendsDetails" : "ConfirmAppointment",
               )
             }
             label={forFriend ? "Enter friends details" : "Confirm Appointment"}
           />
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 };
 export default BookAppointment;
@@ -365,7 +365,7 @@ const calenderTheme: Theme = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.white,
+    backgroundColor: Colors.red,
   },
 
   heading: {

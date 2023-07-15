@@ -7,7 +7,7 @@ import Dashboard from "@pages/home/dashboard/Dashboard";
 import ServiceDetails from "@pages/home/dashboard/components/ServiceDetails";
 import BookAppointment from "@pages/home/dashboard/components/BookAppointment";
 import ServiceList from "@pages/home/dashboard/components/ServiceList";
-import PackageSelection from "@pages/home/PackageSelection";
+import PackageSelection from "@pages/home/dashboard/components/PackageSelection";
 import ConfirmAppointment from "@pages/home/dashboard/components/ConfirmAppointment";
 import {
   bookAppointmentScreenOptions,

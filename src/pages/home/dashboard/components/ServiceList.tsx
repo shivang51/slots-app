@@ -17,7 +17,7 @@ const Service = (props: { data: IService }) => {
   return (
     <Pressable
       onPress={() =>
-        navigation.navigate("PackageSelection", { serviceData: props.data })
+        navigation.navigate("ServiceDetails", { serviceData: props.data })
       }
     >
       <View style={styles.service}>

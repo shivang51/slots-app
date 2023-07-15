@@ -35,6 +35,8 @@ const Dashboard = ({ route }: HomeDashboardStackScreenProps<"Dashboard">) => {
       <ScrollView>
         <Categories />
         <Services id={0} data={DummyServices} />
+        <Services id={1} data={DummyServices} />
+        <Services id={2} data={DummyServices} />
       </ScrollView>
     </View>
   );
