@@ -16,7 +16,7 @@ import { Colors, GStyles } from "@/utils/GlobalStyles";
 import PrimaryButton from "@/components/PrimaryButton";
 import TextBox from "@/components/TextBox";
 import TextButton from "@/components/TextButton";
-import { ForgotPasswordStackNavigation } from "@pages/_forgot_password/FPIndex";
+import { ForgotPasswordStackNavigation } from "@pages/forgot_password/FPIndex";
 
 export const FORGOT_PASSWORD_PAGE_1_ID: string = "/email";
 

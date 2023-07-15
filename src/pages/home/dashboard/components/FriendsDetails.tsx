@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View } from "react-native";
 import React, { useState } from "react";
-import { Colors } from "@/utils/GlobalStyles";
+import { Colors } from "@utils/GlobalStyles";
 import { useNavigation } from "@react-navigation/native";
-import { SignUpStackNavigation } from "@pages/_signup/SignUpIndex";
-import { TabNavigationProp } from "@pages/_home/HomeIndex";
+import { SignUpStackNavigation } from "@pages/signup/SignUpIndex";
+import { TabNavigationProp } from "@pages/_home/HomeTabNavigation";
 import TextBox from "@components/TextBox";
 import SecondaryButton from "@components/SecondaryButton";
 import PrimaryButton from "@components/PrimaryButton";

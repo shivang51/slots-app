@@ -1,4 +1,4 @@
-import { Tags, Services, IPackage, IEmployee } from "./Types";
+import { Tags, Services, IPackage, IEmployee } from "../types/common_types";
 
 export let DummyTags: Tags = [
   { name: "Verified", active: false },

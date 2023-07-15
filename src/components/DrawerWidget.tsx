@@ -1,38 +1,26 @@
 import Icons from "@/utils/Icons";
-import {
-  DrawerContentScrollView,
-  DrawerItem,
-  DrawerItemList,
-} from "@react-navigation/drawer";
-import {
-  DrawerActions,
-  StackActions,
-  useNavigation,
-} from "@react-navigation/native";
+import { DrawerContentScrollView } from "@react-navigation/drawer";
+import { DrawerActions, useNavigation } from "@react-navigation/native";
+
 import Icon from "react-native-vector-icons/FontAwesome5";
 
-import {
-  Linking,
-  Pressable,
-  View,
-  Text,
-  Image,
-  StyleSheet,
-} from "react-native";
-import { DrawerNavigation } from "@/pages/_home/DrawerIndex";
+import { Pressable, View, Text, Image, StyleSheet } from "react-native";
+import { HomeDrawerScreenProps } from "@/types/route_types";
 
 interface IDrawerProps {
-  navigator: DrawerNavigation;
   title: string;
   screenName: string;
   icon: any;
 }
 
 const MDrawerItem = (props: IDrawerProps) => {
+  const navigation =
+    useNavigation<HomeDrawerScreenProps<"DrawerRoot">["navigation"]>();
   return (
     <Pressable
-      onPress={() =>
-        props.navigator.navigate("HomeIndex", { screen: props.screenName })
+      onPress={
+        () => null
+        // navigation.navigate("DrawerRoot", { screen: props.screenName })
       }
     >
       <View style={styles.item}>
@@ -47,7 +35,8 @@ const MDrawerItem = (props: IDrawerProps) => {
 };
 
 function DrawerWidget(props: any) {
-  const navigator = useNavigation<DrawerNavigation>();
+  const navigation =
+    useNavigation<HomeDrawerScreenProps<"DrawerRoot">["navigation"]>();
 
   return (
     <DrawerContentScrollView {...props} style={{ padding: 16 }}>
@@ -57,7 +46,7 @@ function DrawerWidget(props: any) {
           <Text style={styles.heading}>Guest</Text>
         </View>
         <Pressable
-          onPress={() => navigator.dispatch(DrawerActions.toggleDrawer())}
+          onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
         >
           <Image style={styles.icon} source={Icons.cross} />
         </Pressable>
@@ -65,44 +54,29 @@ function DrawerWidget(props: any) {
 
       <View style={styles.items}>
         <Text style={{ marginVertical: 8, fontWeight: "bold" }}>MAIN MENU</Text>
+        <MDrawerItem title="Dashboard" icon={Icons.home} screenName="Home" />
+        <MDrawerItem title="Search" icon={Icons.search} screenName="Home" />
         <MDrawerItem
-          navigator={navigator}
-          title="Dashboard"
-          icon={Icons.home}
-          screenName="home"
-        />
-        <MDrawerItem
-          navigator={navigator}
-          title="Search"
-          icon={Icons.search}
-          screenName="home"
-        />
-        <MDrawerItem
-          navigator={navigator}
           title="Show Nearby Services"
           icon={Icons.map}
-          screenName="maps"
+          screenName="Maps"
         />
         <MDrawerItem
-          navigator={navigator}
           title="Upcoming Appointments"
           icon={Icons.calender}
           screenName="appointments"
         />
         <MDrawerItem
-          navigator={navigator}
           title="Previous Appointments"
           icon={Icons.history}
           screenName="appointments"
         />
         <MDrawerItem
-          navigator={navigator}
           title="Account Settings"
           icon={Icons.settings}
           screenName="appointments"
         />
         <MDrawerItem
-          navigator={navigator}
           title="Notifications"
           icon={Icons.notifications}
           screenName="appointments"

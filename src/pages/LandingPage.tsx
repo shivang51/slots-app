@@ -3,23 +3,21 @@ import React, { useCallback, useEffect, useState } from "react";
 import SlotsTitle from "../components/SlotsTitle";
 import PrimaryButton from "../components/PrimaryButton";
 import SecondaryButton from "../components/SecondaryButton";
-import { Colors } from "../utils/GlobalStyles";
+import { Colors } from "@utils/GlobalStyles";
 import GoogleButton from "../components/GoogleButton";
-import { StackActions, useNavigation } from "@react-navigation/native";
-import { LOGIN_PAGE_ID } from "./LogInPage";
-// import LinkButton from "../components/LinkButton";
+import { StackActions } from "@react-navigation/native";
 import TextButton from "../components/TextButton";
-import LinkTextButton from "../components/LinkTextButton";
-import { RootStackNavigation } from "@/pages/Index";
+import { RootStackParamList } from "@/types/route_types";
+import { NativeStackScreenProps } from "react-native-screens/native-stack";
 
-export const LANDING_PAGE_ID: string = "index";
-const LandingPage = ({ navigation }: { navigation: RootStackNavigation }) => {
+type Props = NativeStackScreenProps<RootStackParamList, "Landing">;
+const LandingPage = ({ navigation }: Props) => {
   return (
     <View style={styles.container}>
       <View style={styles.in_container}>
         <View>
           <SlotsTitle />
-          <Text style={styles.subTitle}>Book your apointments</Text>
+          <Text style={styles.subTitle}>Book your appointments</Text>
         </View>
         <View style={styles.buttons}>
           <View style={styles.margin_bootom_27}>
@@ -30,13 +28,20 @@ const LandingPage = ({ navigation }: { navigation: RootStackNavigation }) => {
           </View>
           <View style={styles.margin_bootom_27}>
             <SecondaryButton
-              onPress={() => navigation.navigate("SignUp")}
+              onPress={() =>
+                navigation.navigate("SignUp", { userRole: "client" })
+              }
               label="Sign Up"
             />
           </View>
           <TextButton
             onPress={() =>
-              navigation.dispatch(StackActions.replace("HomeRoute"))
+              navigation.dispatch(
+                StackActions.replace("Home", {
+                  screen: "DrawerRoot",
+                  params: { userId: "guest" },
+                }),
+              )
             }
             label="Continue as guest"
           />
@@ -51,7 +56,7 @@ const LandingPage = ({ navigation }: { navigation: RootStackNavigation }) => {
         </Pressable>
         <TextButton
           onPress={() => {
-            navigation.navigate("SignUp", { type: "merchant" });
+            navigation.navigate("SignUp", { userRole: "merchant" });
           }}
           label="Continue as merchant"
         />

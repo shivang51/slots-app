@@ -1,7 +1,7 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { Colors } from "@utils/GlobalStyles";
-import { Tags } from "@utils/Types";
+import { Tags } from "@/types/common_types";
 
 interface ITagsProps {
   tags: Tags;

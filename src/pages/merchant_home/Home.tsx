@@ -3,7 +3,7 @@ import { Image } from "expo-image";
 import React from "react";
 import { Colors } from "@/utils/GlobalStyles";
 import Icon from "react-native-vector-icons/MaterialIcons";
-import { IService, Tags } from "@utils/Types";
+import { IService, Tags } from "@/types/common_types";
 import { DummyServices, DummyTags } from "@utils/Dummy";
 import * as Octicons from "react-native-vector-icons/Octicons";
 import Icons from "@/utils/Icons";
@@ -12,7 +12,7 @@ import {
   AvailableServices,
   availableServiceFromId,
 } from "@utils/AvalilableServices";
-import { Categories } from "@utils/Categories";
+import { AvailableCategories } from "@utils/AvailableCategories";
 
 const Home = () => {
   return (

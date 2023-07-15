@@ -8,35 +8,26 @@ import {
 } from "react-native";
 import React from "react";
 import { Colors } from "@utils/GlobalStyles";
-import { DummyPackage, DummyPackageTags, DummyTags } from "@utils/Dummy";
-import TagsLine from "@components/TagsLine";
+import { DummyPackage } from "@utils/Dummy";
 import { Image } from "expo-image";
-import { white } from "react-native-paper/lib/typescript/src/styles/themes/v2/colors";
-import { backgroundColor } from "react-native-calendars/src/style";
-import { IPackage, IService } from "@utils/Types";
+import { IPackage, IService } from "@/types/common_types";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import { TabNavigationProp } from "@pages/_home/HomeIndex";
 import { ScrollView } from "react-native-gesture-handler";
 import Icon from "react-native-vector-icons/Fontisto";
 import * as MaterialIcon from "react-native-vector-icons/MaterialIcons";
-import * as Ionicons from "react-native-vector-icons/Ionicons";
-
-import TextButton from "@components/TextButton";
-import PrimaryButton from "@components/PrimaryButton";
-import Icons from "@utils/Icons";
-import { availableServiceFromId } from "@utils/AvalilableServices";
 import * as Octicons from "react-native-vector-icons/Octicons";
+import { HomeDashboardStackScreenProps } from "@/types/route_types";
 
 const Package = (props: {
   data: IPackage;
   onPress?: (event: GestureResponderEvent) => void;
   titleSize?: number;
-  marginHorzontal?: number;
+  marginHorizontal?: number;
 }) => {
   return (
     <Pressable
       onPress={props.onPress}
-      style={{ marginHorizontal: props.marginHorzontal ?? 0 }}
+      style={{ marginHorizontal: props.marginHorizontal ?? 0 }}
     >
       <View style={[styles.singleLine, styles.package]}>
         <Image
@@ -194,13 +185,16 @@ const SecondaryIconButton = (props: { label: string; icon: string }) => {
 };
 
 const Packages = (props: { serviceData: IService; data: IPackage[] }) => {
-  const navigation = useNavigation<TabNavigationProp>();
+  const navigation =
+    useNavigation<
+      HomeDashboardStackScreenProps<"ServiceDetails">["navigation"]
+    >();
 
   return (
     <View style={styles.packages}>
       <Pressable
         onPress={() =>
-          navigation.navigate("select_package", {
+          navigation.navigate("PackageSelection", {
             serviceData: props.serviceData,
           })
         }
@@ -219,9 +213,9 @@ const Packages = (props: { serviceData: IService; data: IPackage[] }) => {
             key={ind}
             data={v}
             titleSize={20}
-            marginHorzontal={8}
+            marginHorizontal={8}
             onPress={() =>
-              navigation.navigate("book_appointment", {
+              navigation.navigate("BookAppointment", {
                 serviceName: props.serviceData.name,
                 packageData: v,
               })
@@ -234,7 +228,10 @@ const Packages = (props: { serviceData: IService; data: IPackage[] }) => {
 };
 
 const ServiceDetails = () => {
-  const navigation = useNavigation<TabNavigationProp>();
+  const navigation =
+    useNavigation<
+      HomeDashboardStackScreenProps<"ServiceDetails">["navigation"]
+    >();
   const route = useRoute();
 
   const params = route.params as { serviceData: IService };

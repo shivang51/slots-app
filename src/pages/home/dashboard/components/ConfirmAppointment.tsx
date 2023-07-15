@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, Image } from "react-native";
 import React from "react";
-import { Colors } from "@/utils/GlobalStyles";
+import { Colors } from "@utils/GlobalStyles";
 import Icons from "@utils/Icons";
 import PrimaryButton from "@components/PrimaryButton";
 

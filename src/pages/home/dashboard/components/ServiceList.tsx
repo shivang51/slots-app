@@ -1,20 +1,23 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import React from "react";
-import { Colors } from "@/utils/GlobalStyles";
-import { IService } from "@utils/Types";
+import React, { useEffect } from "react";
+import { Colors } from "@utils/GlobalStyles";
+import { IService } from "@/types/common_types";
 import { useNavigation } from "@react-navigation/native";
-import { TabNavigationProp } from "@pages/_home/HomeIndex";
 import { Image } from "expo-image";
 import * as Octicons from "react-native-vector-icons/Octicons";
 import Icons from "@utils/Icons";
 import TagsLine from "@components/TagsLine";
 import { DummyServices, DummyTags } from "@utils/Dummy";
+import { HomeDashboardStackScreenProps } from "@/types/route_types";
+
 const Service = (props: { data: IService }) => {
-  const navigation = useNavigation<TabNavigationProp>();
+  const navigation =
+    useNavigation<HomeDashboardStackScreenProps<"ServiceList">["navigation"]>();
+
   return (
     <Pressable
       onPress={() =>
-        navigation.navigate("select_package", { serviceData: props.data })
+        navigation.navigate("PackageSelection", { serviceData: props.data })
       }
     >
       <View style={styles.service}>

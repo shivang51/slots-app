@@ -6,13 +6,13 @@ import { Colors } from "@utils/GlobalStyles";
 import TextButton from "@components/TextButton";
 import { ScrollView } from "react-native-gesture-handler";
 import { Image } from "expo-image";
-import { IEmployee, TPackageLocation } from "@utils/Types";
+import { IEmployee, TPackageLocation } from "@/types/common_types";
 import Icon from "react-native-vector-icons/Ionicons";
 import { DummyEmployees } from "@utils/Dummy";
 import PrimaryButton from "@components/PrimaryButton";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { useNavigation } from "@react-navigation/native";
-import { TabNavigationProp } from "@pages/_home/HomeIndex";
+import { TabNavigationProp } from "@pages/_home/HomeTabNavigation";
 
 const TimeSlot = (props: {
   id: number;

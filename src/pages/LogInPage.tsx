@@ -5,19 +5,15 @@ import { Colors, GStyles } from "@/utils/GlobalStyles";
 import TextBox from "@components/TextBox";
 import PrimaryButton from "@components/PrimaryButton";
 import TextButton from "@components/TextButton";
-import { useNavigation } from "@react-navigation/native";
-import { RootStackNavigation } from "@/pages/Index";
-
-export const LOGIN_PAGE_ID: string = "login";
+import { RootStackScreenProps } from "@/types/route_types";
 
 interface IForm {
   email: string;
   password: string;
 }
 
-const LogInPage = () => {
-  const [form, setForm] = useState<IForm>({ email: "tesdt", password: "gobo" });
-  const naviagation = useNavigation<RootStackNavigation>();
+const LogInPage = ({ navigation }: RootStackScreenProps<"SignIn">) => {
+  const [form, setForm] = useState<IForm>({ email: "", password: "" });
 
   const setData = (name: string, value: string, _: number) => {
     setForm({ ...form, [name]: value });
@@ -55,7 +51,7 @@ const LogInPage = () => {
         </View>
         <TextButton
           onPress={() => {
-            naviagation.navigate("ForgotPassowrd");
+            navigation.navigate("ForgotPassword");
           }}
           label="Forgot Password?"
         />

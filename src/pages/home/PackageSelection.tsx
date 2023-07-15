@@ -12,9 +12,9 @@ import TagsLine from "@components/TagsLine";
 import { Image } from "expo-image";
 import { white } from "react-native-paper/lib/typescript/src/styles/themes/v2/colors";
 import { backgroundColor } from "react-native-calendars/src/style";
-import { IPackage, IService } from "@utils/Types";
+import { IPackage, IService } from "@/types/common_types";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import { TabNavigationProp } from "@pages/_home/HomeIndex";
+import { TabNavigationProp } from "@pages/_home/HomeTabNavigation";
 
 const Package = (props: {
   data: IPackage;
