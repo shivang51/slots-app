@@ -14,24 +14,25 @@
     "experiments": {
       "tsconfigPaths": true
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "shivang.slots"
+      "bundleIdentifier": "com.harshbanjare.slots"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      },
-      "package": "com.shivang_sharma.slots"
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "e70e855e-f190-45c4-adba-94397df70718"
+        "projectId": "a6ddf7b3-2058-4ea7-998b-deae86a5e168"
       }
     }
   }
