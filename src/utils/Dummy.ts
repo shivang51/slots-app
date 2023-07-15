@@ -34,7 +34,7 @@ export let DummyServices: Services = [
       zip: 123456,
       country: "Honbo Land",
       lat_long: [32.1024, 77.5619],
-      state: "Inoooo",
+      homeState: "Inoooo",
     },
     banner:
       "https://www.joonsquare.com/usermanage/image/business/prince-hair-art-saloon-udupi-36915/prince-hair-art-saloon-udupi-unnamed-1-.jpg",
@@ -54,7 +54,7 @@ export let DummyServices: Services = [
       zip: 123456,
       country: "Honbo Land",
       lat_long: [32.1024, 77.5619],
-      state: "Inoooo",
+      homeState: "Inoooo",
     },
     banner:
       "https://www.joonsquare.com/usermanage/image/business/prince-hair-art-saloon-udupi-36915/prince-hair-art-saloon-udupi-unnamed-1-.jpg",
@@ -74,7 +74,7 @@ export let DummyServices: Services = [
       zip: 123456,
       country: "Honbo Land",
       lat_long: [32.1024, 77.5619],
-      state: "Inoooo",
+      homeState: "Inoooo",
     },
     banner:
       "https://www.joonsquare.com/usermanage/image/business/prince-hair-art-saloon-udupi-36915/prince-hair-art-saloon-udupi-unnamed-1-.jpg",
@@ -94,7 +94,7 @@ export let DummyServices: Services = [
       zip: 123456,
       country: "Honbo Land",
       lat_long: [32.1024, 77.5619],
-      state: "Inoooo",
+      homeState: "Inoooo",
     },
     banner:
       "https://www.joonsquare.com/usermanage/image/business/prince-hair-art-saloon-udupi-36915/prince-hair-art-saloon-udupi-unnamed-1-.jpg",
@@ -114,7 +114,7 @@ export let DummyServices: Services = [
       zip: 123456,
       country: "Honbo Land",
       lat_long: [32.1024, 77.5619],
-      state: "Inoooo",
+      homeState: "Inoooo",
     },
     banner:
       "https://www.joonsquare.com/usermanage/image/business/prince-hair-art-saloon-udupi-36915/prince-hair-art-saloon-udupi-unnamed-1-.jpg",
@@ -134,7 +134,7 @@ export let DummyServices: Services = [
       zip: 123456,
       country: "Honbo Land",
       lat_long: [32.1024, 77.5619],
-      state: "Inoooo",
+      homeState: "Inoooo",
     },
     banner:
       "https://www.joonsquare.com/usermanage/image/business/prince-hair-art-saloon-udupi-36915/prince-hair-art-saloon-udupi-unnamed-1-.jpg",

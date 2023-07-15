@@ -343,8 +343,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.white,
-    // width: "100%",
-    // padding: 16,
+    marginBottom: 38,
   },
 
   content: {

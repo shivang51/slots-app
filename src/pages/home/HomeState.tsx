@@ -8,23 +8,26 @@ import React, {
 
 export interface HomeStateInterface {
   isDashboardHome: boolean;
+  hideTabBar: boolean;
 }
 
 const HomeStateContext = createContext({
-  state: {} as Partial<HomeStateInterface>,
-  setState: {} as Dispatch<SetStateAction<Partial<HomeStateInterface>>>,
+  homeState: {} as Partial<HomeStateInterface>,
+  setHomeState: {} as Dispatch<SetStateAction<Partial<HomeStateInterface>>>,
 });
 
 const HomeStateProvider = ({
   children,
-  value = { isDashboardHome: true } as HomeStateInterface,
+  value = { isDashboardHome: true, hideTabBar: false } as HomeStateInterface,
 }: {
   children: React.ReactNode;
   value?: Partial<HomeStateInterface>;
 }) => {
-  const [state, setState] = useState(value);
+  const [homeState, setHomeState] = useState(value);
   return (
-    <HomeStateContext.Provider value={{ state, setState }}>
+    <HomeStateContext.Provider
+      value={{ homeState: homeState, setHomeState: setHomeState }}
+    >
       {children}
     </HomeStateContext.Provider>
   );

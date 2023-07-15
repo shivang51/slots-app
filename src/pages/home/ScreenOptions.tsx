@@ -70,6 +70,14 @@ export const homeScreenOptions: (
     );
   },
   tabBarShowLabel: false,
+  tabBarStyle: styles.tabBarStyle,
+});
+
+const styles = StyleSheet.create({
+  tabar_icon: {
+    width: 24,
+    height: 24,
+  },
   tabBarStyle: {
     backgroundColor: "rgba(230, 230, 230, 1)",
     marginHorizontal: 16,
@@ -81,9 +89,4 @@ export const homeScreenOptions: (
   },
 });
 
-const styles = StyleSheet.create({
-  tabar_icon: {
-    width: 24,
-    height: 24,
-  },
-});
+export const tabBarStyle = styles.tabBarStyle;

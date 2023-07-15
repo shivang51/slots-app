@@ -5,11 +5,11 @@ import { useHomeState } from "@pages/home/HomeState";
 import { useFocusEffect } from "@react-navigation/native";
 
 const Chats = () => {
-  const { setState } = useHomeState();
+  const { setHomeState } = useHomeState();
 
   useFocusEffect(
     React.useCallback(() => {
-      setState({ isDashboardHome: true });
+      setHomeState({ isDashboardHome: true });
     }, []),
   );
   return (

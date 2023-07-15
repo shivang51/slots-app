@@ -4,11 +4,11 @@ import { useFocusEffect } from "@react-navigation/native";
 import { useHomeState } from "@pages/home/HomeState";
 
 const Maps = () => {
-  const { setState } = useHomeState();
+  const { setHomeState } = useHomeState();
 
   useFocusEffect(
     React.useCallback(() => {
-      setState({ isDashboardHome: true });
+      setHomeState({ isDashboardHome: true });
     }, []),
   );
   return (

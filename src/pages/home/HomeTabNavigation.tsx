@@ -11,7 +11,7 @@ import Maps from "./Maps";
 import AppointmentsIndex from "./appointments/AppointmentsIndex";
 
 import { HomeDrawerScreenProps, HomeTabParamList } from "@/types/route_types";
-import { homeScreenOptions } from "./ScreenOptions";
+import { homeScreenOptions, tabBarStyle } from "./ScreenOptions";
 import HomeStackNavigation from "@pages/home/dashboard/HomeStackNavigation";
 import { useHomeState } from "@pages/home/HomeState";
 
@@ -23,7 +23,7 @@ const HomeTabNavigation = ({
 }: HomeDrawerScreenProps<"DrawerRoot">) => {
   const [fontLoaded] = load_fonts();
 
-  const { state } = useHomeState();
+  const { homeState } = useHomeState();
 
   return (
     <HomeTabNavigator.Navigator
@@ -38,7 +38,8 @@ const HomeTabNavigation = ({
           screen: "Dashboard",
         }}
         options={{
-          headerShown: state.isDashboardHome,
+          headerShown: homeState.isDashboardHome,
+          tabBarStyle: homeState.hideTabBar ? { display: "none" } : tabBarStyle,
         }}
       />
 

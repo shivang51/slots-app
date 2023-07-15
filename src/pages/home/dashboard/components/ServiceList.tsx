@@ -9,6 +9,7 @@ import Icons from "@utils/Icons";
 import TagsLine from "@components/TagsLine";
 import { DummyServices, DummyTags } from "@utils/Dummy";
 import { HomeDashboardStackScreenProps } from "@/types/route_types";
+import { ScrollView } from "react-native-gesture-handler";
 
 const Service = (props: { data: IService }) => {
   const navigation =
@@ -73,9 +74,14 @@ const ServiceList = () => {
   return (
     <View style={styles.container}>
       <TagsLine tags={DummyTags} />
-      <Service data={DummyServices[0]} />
-      <Service data={DummyServices[0]} />
-      <Service data={DummyServices[0]} />
+      <ScrollView style={{ marginBottom: 38 }}>
+        <Service data={DummyServices[0]} />
+        <Service data={DummyServices[0]} />
+        <Service data={DummyServices[0]} />
+        <Service data={DummyServices[0]} />
+        <Service data={DummyServices[0]} />
+        <Service data={DummyServices[0]} />
+      </ScrollView>
     </View>
   );
 };
@@ -85,6 +91,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.white,
     padding: 16,
+    paddingTop: 2,
   },
 
   notFound: {

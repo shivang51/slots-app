@@ -11,8 +11,9 @@ import Icon from "react-native-vector-icons/Ionicons";
 import { DummyEmployees } from "@utils/Dummy";
 import PrimaryButton from "@components/PrimaryButton";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
-import { useNavigation } from "@react-navigation/native";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { HomeDashboardStackScreenProps } from "@/types/route_types";
+import { useHomeState } from "@pages/home/HomeState";
 
 const TimeSlot = (props: {
   id: number;
@@ -301,6 +302,16 @@ const BookAppointment = ({
   const buffer = new Date();
   buffer.setDate(current.getDate() + 31);
 
+  const { setHomeState } = useHomeState();
+  useFocusEffect(
+    React.useCallback(() => {
+      setHomeState((prevState) => ({ ...prevState, hideTabBar: true }));
+
+      return () => {
+        setHomeState((prevState) => ({ ...prevState, hideTabBar: false }));
+      };
+    }, []),
+  );
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -365,7 +376,6 @@ const calenderTheme: Theme = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.red,
   },
 
   heading: {

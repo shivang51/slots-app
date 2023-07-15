@@ -30,7 +30,7 @@ const FriendsDetails = () => {
     addressLine: "",
     pinCode: "",
     city: "",
-    state: "",
+    homeState: "",
     country: "",
   });
 
@@ -151,7 +151,7 @@ const FriendsDetails = () => {
       <TextBox
         name="state"
         placeholder="State"
-        value={formData.state}
+        value={formData.homeState}
         onValueChange={onFormChange}
       />
 

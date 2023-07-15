@@ -15,14 +15,14 @@ import { useHomeState } from "@pages/home/HomeState";
 import { useFocusEffect } from "@react-navigation/native";
 
 const Dashboard = ({ route }: HomeDashboardStackScreenProps<"Dashboard">) => {
-  const { setState } = useHomeState();
+  const { setHomeState } = useHomeState();
 
   useFocusEffect(
     React.useCallback(() => {
-      setState({ isDashboardHome: true });
+      setHomeState({ isDashboardHome: true });
 
       return () => {
-        setState({ isDashboardHome: false });
+        setHomeState({ isDashboardHome: false });
       };
     }, []),
   );

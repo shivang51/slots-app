@@ -10,11 +10,11 @@ import { useFocusEffect } from "@react-navigation/native";
 
 const AppointmentsNavgation = createMaterialTopTabNavigator();
 const AppointmentsIndex = () => {
-  const { setState } = useHomeState();
+  const { setHomeState } = useHomeState();
 
   useFocusEffect(
     React.useCallback(() => {
-      setState({ isDashboardHome: true });
+      setHomeState({ isDashboardHome: true });
     }, []),
   );
   return (
