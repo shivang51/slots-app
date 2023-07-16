@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import TagsLine from "@components/TagsLine";
 import { DummyServices, DummyTags } from "@utils/Dummy";
 import { ScrollView } from "react-native-gesture-handler";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import SearchBox from "@pages/home/dashboard/components/SearchBox";
 import Services from "@pages/home/dashboard/components/Services";
 import Categories from "@pages/home/dashboard/components/Categories";
@@ -13,9 +13,19 @@ import {
 } from "@/types/route_types";
 import { useHomeState } from "@pages/home/HomeState";
 import { useFocusEffect } from "@react-navigation/native";
+import { IService, IServices } from "@/types/common_types";
+import { organizeServices } from "@utils/Utils";
 
 const Dashboard = ({ route }: HomeDashboardStackScreenProps<"Dashboard">) => {
   const { setHomeState } = useHomeState();
+
+  const [organizedServices, setOrganizedServices] = useState<{
+    [id: number]: IServices;
+  }>([]);
+
+  useEffect(() => {
+    setOrganizedServices(organizeServices(DummyServices));
+  }, [DummyServices]);
 
   useFocusEffect(
     React.useCallback(() => {
@@ -34,9 +44,13 @@ const Dashboard = ({ route }: HomeDashboardStackScreenProps<"Dashboard">) => {
 
       <ScrollView>
         <Categories />
-        <Services id={0} data={DummyServices} />
-        <Services id={1} data={DummyServices} />
-        <Services id={2} data={DummyServices} />
+        {Object.keys(organizedServices).map((v, ind) => (
+          <Services
+            key={ind}
+            id={parseInt(v)}
+            data={organizedServices[parseInt(v)] ?? []}
+          />
+        ))}
       </ScrollView>
     </View>
   );

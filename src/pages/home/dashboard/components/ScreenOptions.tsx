@@ -62,9 +62,9 @@ interface IServiceListProps {
 export const serviceListScreenOptions: (
   props: IServiceListProps,
 ) => StackNavigationOptions = (props: IServiceListProps) => {
-  const { serviceTypeId } = props.route.params;
+  const { services } = props.route.params;
 
-  const serviceName = AvailableServices.All[serviceTypeId].name;
+  const serviceName = AvailableServices.All[services[0].typeId].name;
 
   return {
     headerTitle: `${serviceName}s Near You`,

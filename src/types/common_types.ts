@@ -25,7 +25,7 @@ interface User {
   service: IService | null; // null if normal user
 }
 
-export type Services = IService[];
+export type IServices = IService[];
 
 export interface IService {
   name: string;

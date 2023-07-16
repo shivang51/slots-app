@@ -71,7 +71,10 @@ const Service = (props: { data: IService }) => {
   );
 };
 
-const ServiceList = () => {
+const ServiceList = ({
+  route,
+  navigation,
+}: HomeDashboardStackScreenProps<"ServiceList">) => {
   const { setHomeState } = useHomeState();
   useFocusEffect(
     React.useCallback(() => {
@@ -82,12 +85,9 @@ const ServiceList = () => {
     <View style={styles.container}>
       <TagsLine tags={DummyTags} />
       <ScrollView style={{ marginBottom: 38 }}>
-        <Service data={DummyServices[0]} />
-        <Service data={DummyServices[0]} />
-        <Service data={DummyServices[0]} />
-        <Service data={DummyServices[0]} />
-        <Service data={DummyServices[0]} />
-        <Service data={DummyServices[0]} />
+        {route.params.services.map((v, ind) => (
+          <Service key={ind} data={v} />
+        ))}
       </ScrollView>
     </View>
   );

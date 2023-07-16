@@ -22,6 +22,7 @@ import * as MaterialIcon from "react-native-vector-icons/MaterialIcons";
 import * as Octicons from "react-native-vector-icons/Octicons";
 import { HomeDashboardStackScreenProps } from "@/types/route_types";
 import { useHomeState } from "@pages/home/HomeState";
+import { AvailableServices } from "@utils/AvalilableServices";
 
 const Package = (props: {
   data: IPackage;
@@ -291,7 +292,7 @@ const ServiceDetails = () => {
             marginTop: 8,
           }}
         >
-          <View style={{ flexDirection: "row" }}>
+          <View style={{ flexDirection: "row", alignItems: "center" }}>
             <Text
               style={{
                 backgroundColor: "black",
@@ -303,7 +304,7 @@ const ServiceDetails = () => {
                 textTransform: "capitalize",
               }}
             >
-              {params.serviceData.type}
+              {AvailableServices.All[params.serviceData.typeId].name}
             </Text>
             <Text
               style={{

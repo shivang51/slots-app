@@ -1,4 +1,4 @@
-import { IPackage, IService } from "@/types/common_types";
+import { IPackage, IService, IServices } from "@/types/common_types";
 import { StackScreenProps } from "@react-navigation/stack";
 import {
   CompositeScreenProps,
@@ -46,7 +46,7 @@ export type HomeTabScreenProps<T extends keyof HomeTabParamList> =
 export type HomeDashboardStackParamList = {
   Dashboard: { userId: "guest" | string };
 
-  ServiceList: { serviceTypeId: number };
+  ServiceList: { services: IServices };
 
   ServiceDetails: {
     serviceData: IService;

@@ -1,4 +1,4 @@
-import { IEmployee, IPackage, Services, Tags } from "@/types/common_types";
+import { IEmployee, IPackage, IServices, Tags } from "@/types/common_types";
 
 export let DummyTags: Tags = [
   { name: "Verified", active: false },
@@ -25,11 +25,12 @@ export let DummyPackage: IPackage = {
   category: "men",
 };
 
-export let DummyServices: Services = [
+export let DummyServices: IServices = [
   {
     name: "Bark and Bubbles",
     typeId: 3,
-    banner: "https://example.com/images/bark-and-bubbles.jpg",
+    banner:
+      "https://www.pawspace.in/wp-content/uploads/2022/07/Layer-1-3-1024x605.png",
     address: {
       lat_long: [34.0522, -118.2437],
       zip: 90001,
@@ -48,7 +49,8 @@ export let DummyServices: Services = [
   {
     name: "Glamour Salon",
     typeId: 0,
-    banner: "https://example.com/images/glamour-salon.jpg",
+    banner:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hair_Salon_Stations.jpg/420px-Hair_Salon_Stations.jpg",
     address: {
       lat_long: [40.7128, -74.006],
       zip: 10001,
@@ -67,7 +69,8 @@ export let DummyServices: Services = [
   {
     name: "Inked Paradise",
     typeId: 1,
-    banner: "https://example.com/images/inked-paradise.jpg",
+    banner:
+      "https://www.shutterstock.com/image-vector/design-poster-tattoo-studio-two-260nw-1150367480.jpg",
     address: {
       lat_long: [41.8781, -87.6298],
       zip: 60601,
@@ -86,7 +89,8 @@ export let DummyServices: Services = [
   {
     name: "Elegant Massages",
     typeId: 2,
-    banner: "https://example.com/images/elegant-massages.jpg",
+    banner:
+      "https://images.template.net/83906/Massage-Parlour-Promotion-Banner-Template.jpeg",
     address: {
       lat_long: [29.7604, -95.3698],
       zip: 77001,
@@ -105,7 +109,8 @@ export let DummyServices: Services = [
   {
     name: "Posh Paws",
     typeId: 3,
-    banner: "https://example.com/images/posh-paws.jpg",
+    banner:
+      "https://www.sbdcnet.org/wp-content/uploads/2019/02/jamie-street-s9Tf1eBDFqw-unsplash-2048x1536.jpg",
     address: {
       lat_long: [33.4484, -112.074],
       zip: 85001,
@@ -124,7 +129,8 @@ export let DummyServices: Services = [
   {
     name: "Dazzling Hair",
     typeId: 0,
-    banner: "https://example.com/images/dazzling-hair.jpg",
+    banner:
+      "https://img.freepik.com/premium-photo/working-places-masters-hairdressing-beauty-salon-modern-design-interior_285484-133.jpg?w=2000",
     address: {
       lat_long: [39.9526, -75.1652],
       zip: 19101,
@@ -143,7 +149,8 @@ export let DummyServices: Services = [
   {
     name: "Body Art Studio",
     typeId: 1,
-    banner: "https://example.com/images/body-art-studio.jpg",
+    banner:
+      "https://c7.alamy.com/comp/2FWHTM9/tattoo-studio-banner-2FWHTM9.jpg",
     address: {
       lat_long: [29.4241, -98.4936],
       zip: 78201,

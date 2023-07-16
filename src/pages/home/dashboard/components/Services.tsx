@@ -1,4 +1,4 @@
-import { IService } from "@/types/common_types";
+import { IService, IServices } from "@/types/common_types";
 import { availableServiceFromId } from "@utils/AvalilableServices";
 import { useNavigation } from "@react-navigation/native";
 import { Pressable, Text, View, StyleSheet } from "react-native";
@@ -10,7 +10,7 @@ import { Colors } from "@utils/GlobalStyles";
 import Service from "@pages/home/dashboard/components/Service";
 import { HomeDashboardStackScreenProps } from "@/types/route_types";
 
-const Services = (props: { id: number; data: IService[] }) => {
+const Services = (props: { id: number; data: IServices }) => {
   const serviceType = availableServiceFromId(props.id);
   const navigation =
     useNavigation<HomeDashboardStackScreenProps<"Dashboard">["navigation"]>();
@@ -19,7 +19,7 @@ const Services = (props: { id: number; data: IService[] }) => {
     <View style={styles.services}>
       <Pressable
         onPress={() =>
-          navigation.navigate("ServiceList", { serviceTypeId: serviceType.id })
+          navigation.navigate("ServiceList", { services: props.data })
         }
       >
         <View style={styles.servicesHeader}>
@@ -46,7 +46,7 @@ export default Services;
 
 const styles = StyleSheet.create({
   services: {
-    marginVertical: 8,
+    marginVertical: 12,
     flexDirection: "column",
     width: "100%",
     alignSelf: "stretch",

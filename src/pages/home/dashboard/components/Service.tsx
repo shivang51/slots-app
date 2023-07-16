@@ -1,17 +1,17 @@
 import { IService } from "@/types/common_types";
 import { useNavigation } from "@react-navigation/native";
-import { HomeStackScreenProps, HomeTabScreenProps } from "@/types/route_types";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { Image } from "expo-image";
 import * as Octicons from "react-native-vector-icons/Octicons";
 import { Colors } from "@utils/GlobalStyles";
 import Icons from "@utils/Icons";
 import React from "react";
-import HomeStackNavigation from "@pages/home/dashboard/HomeStackNavigation";
+import { HomeDashboardStackScreenProps } from "@/types/route_types";
+import { parseHour } from "@utils/Utils";
 
 const Service = (props: { data: IService }) => {
   const navigation =
-    useNavigation<HomeStackScreenProps<"Dashboard">["navigation"]>();
+    useNavigation<HomeDashboardStackScreenProps<"Dashboard">["navigation"]>();
   return (
     <Pressable
       onPress={() =>
@@ -36,10 +36,7 @@ const Service = (props: { data: IService }) => {
           {props.data.name}
         </Text>
         <Text numberOfLines={1} style={undefined}>
-          Opens till{" "}
-          {new Date(Date.parse(props.data.time.close))
-            .toLocaleTimeString()
-            .replace(/(.*)\D\d+/, "$1")}
+          Opens till {parseHour(parseInt(props.data.time.close.split(":")[0]))}
         </Text>
         <Text style={styles.serviceDistance} numberOfLines={1}>
           5 mins away

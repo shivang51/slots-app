@@ -14,6 +14,7 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { HomeDashboardStackScreenProps } from "@/types/route_types";
 import { useHomeState } from "@pages/home/HomeState";
+import { parseHour } from "@utils/Utils";
 
 const TimeSlot = (props: {
   id: number;
@@ -23,14 +24,6 @@ const TimeSlot = (props: {
   selected?: boolean;
 }) => {
   const [label, setLabel] = useState("");
-
-  const parseHour = (hour: number) => {
-    let h = hour % 12;
-    if (h == 0) h = 12;
-
-    const hStr = h < 10 ? `0${h}` : h.toString();
-    return hStr + (hour < 12 ? " AM" : " PM");
-  };
 
   useEffect(() => {
     setLabel(parseHour(props.from) + " - " + parseHour(props.to));
