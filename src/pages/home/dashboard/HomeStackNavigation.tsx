@@ -30,6 +30,17 @@ const HomeStackNavigation = ({
         headerTitleStyle: {
           fontSize: 22,
         },
+
+        transitionSpec: {
+          open: {
+            animation: "spring",
+            config: { bounciness: 15, velocity: 1 },
+          },
+          close: {
+            animation: "spring",
+            config: { bounciness: 15, velocity: 1 },
+          },
+        },
       }}
     >
       <HomeStackNavigator.Screen
@@ -66,11 +77,17 @@ const HomeStackNavigation = ({
       <HomeStackNavigator.Screen
         name={"FriendsDetails"}
         component={FriendsDetails}
+        options={{
+          headerTitle: "Friends Details",
+        }}
       />
 
       <HomeStackNavigator.Screen
         name={"ConfirmAppointment"}
         component={ConfirmAppointment}
+        options={{
+          headerTitle: "Confirm Your Appointment",
+        }}
       />
     </HomeStackNavigator.Navigator>
   );

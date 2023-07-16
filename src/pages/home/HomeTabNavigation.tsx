@@ -1,6 +1,6 @@
-import { StyleSheet, Image } from "react-native";
+import { StyleSheet, Image, Dimensions } from "react-native";
 
-import React from "react";
+import React, { useRef } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import Icons from "@utils/Icons";
@@ -14,8 +14,10 @@ import { HomeDrawerScreenProps, HomeTabParamList } from "@/types/route_types";
 import { homeScreenOptions, tabBarStyle } from "./ScreenOptions";
 import HomeStackNavigation from "@pages/home/dashboard/HomeStackNavigation";
 import { useHomeState } from "@pages/home/HomeState";
+import { Animated } from "react-native";
 
 const HomeTabNavigator = createBottomTabNavigator<HomeTabParamList>();
+const { width } = Dimensions.get("window");
 
 const HomeTabNavigation = ({
   route,
@@ -27,9 +29,11 @@ const HomeTabNavigation = ({
 
   return (
     <HomeTabNavigator.Navigator
-      screenOptions={(props) =>
-        homeScreenOptions(navigation, fontLoaded, props)
-      }
+      screenOptions={(props) => ({
+        ...homeScreenOptions(navigation, fontLoaded, props),
+        scrollEnabled: true,
+        indicatorStyle: { backgroundColor: "transparent" },
+      })}
     >
       <HomeTabNavigator.Screen
         name={"Home"}

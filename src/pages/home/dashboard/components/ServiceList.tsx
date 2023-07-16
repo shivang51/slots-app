@@ -11,6 +11,7 @@ import { DummyServices, DummyTags } from "@utils/Dummy";
 import { HomeDashboardStackScreenProps } from "@/types/route_types";
 import { ScrollView } from "react-native-gesture-handler";
 import { useHomeState } from "@pages/home/HomeState";
+import * as Animatable from "react-native-animatable";
 
 const Service = (props: { data: IService }) => {
   const navigation =
@@ -28,7 +29,6 @@ const Service = (props: { data: IService }) => {
           onError={(err) => console.error(err)}
           source={{ uri: props.data.banner }}
         />
-
         <View
           style={{
             justifyContent: "center",
@@ -82,14 +82,14 @@ const ServiceList = ({
     }, []),
   );
   return (
-    <View style={styles.container}>
+    <Animatable.View style={styles.container}>
       <TagsLine tags={DummyTags} />
       <ScrollView style={{ marginBottom: 38 }}>
         {route.params.services.map((v, ind) => (
           <Service key={ind} data={v} />
         ))}
       </ScrollView>
-    </View>
+    </Animatable.View>
   );
 };
 

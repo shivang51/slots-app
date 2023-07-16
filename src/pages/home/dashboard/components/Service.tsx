@@ -8,6 +8,13 @@ import Icons from "@utils/Icons";
 import React from "react";
 import { HomeDashboardStackScreenProps } from "@/types/route_types";
 import { parseHour } from "@utils/Utils";
+import Animated, {
+  FadeIn,
+  FadeInDown,
+  FadeInLeft,
+  FadeInUp,
+  SlideInRight,
+} from "react-native-reanimated";
 
 const Service = (props: { data: IService }) => {
   const navigation =
@@ -18,7 +25,7 @@ const Service = (props: { data: IService }) => {
         navigation.navigate("ServiceDetails", { serviceData: props.data })
       }
     >
-      <View style={styles.service}>
+      <Animated.View sharedTransitionTag={"service1"} style={styles.service}>
         <View
           style={{
             flex: 1,
@@ -57,7 +64,7 @@ const Service = (props: { data: IService }) => {
             source={Icons.verifiedIcon}
           />
         </View>
-      </View>
+      </Animated.View>
     </Pressable>
   );
 };

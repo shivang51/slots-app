@@ -7,15 +7,12 @@ const BackButton = (props: {
   onPress: ((e?: GestureResponderEvent) => void) | null | undefined;
 }) => {
   return (
-    <TouchableOpacity
-      useNativeAnimations={true}
-      onPress={() => (props.onPress ? props.onPress() : null)}
-    >
+    <Pressable onPress={() => (props.onPress ? props.onPress() : null)}>
       <Image
         source={Icons.back}
         style={{ width: 24, height: 24, marginLeft: 8 }}
       />
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 

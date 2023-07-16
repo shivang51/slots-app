@@ -23,7 +23,7 @@ import * as Octicons from "react-native-vector-icons/Octicons";
 import { HomeDashboardStackScreenProps } from "@/types/route_types";
 import { useHomeState } from "@pages/home/HomeState";
 import { AvailableServices } from "@utils/AvalilableServices";
-
+import * as Animatable from "react-native-animatable";
 const Package = (props: {
   data: IPackage;
   onPress?: (event: GestureResponderEvent) => void;
@@ -261,7 +261,10 @@ const ServiceDetails = () => {
   });
 
   return (
-    <View style={styles.container}>
+    <Animatable.View
+      style={styles.container}
+      // entering={SlideInRight.duration(200)}
+    >
       <View style={{ height: "30%" }}>
         <ScrollView
           horizontal={true}
@@ -269,7 +272,7 @@ const ServiceDetails = () => {
         >
           <Image
             source={{ uri: params.serviceData.banner }}
-            style={imageStyle.crousel}
+            style={[imageStyle.crousel]}
           />
           <Image
             source={{ uri: params.serviceData.banner }}
@@ -283,8 +286,9 @@ const ServiceDetails = () => {
       </View>
 
       <View style={styles.content}>
-        <Text style={styles.title}>{params.serviceData.name}</Text>
-
+        <Animatable.Text style={styles.title}>
+          {params.serviceData.name}
+        </Animatable.Text>
         <View
           style={{
             flexDirection: "row",
@@ -320,7 +324,6 @@ const ServiceDetails = () => {
 
           <StarRating rating={4.5} />
         </View>
-
         <View
           style={{
             flexDirection: "row",
@@ -333,12 +336,10 @@ const ServiceDetails = () => {
           <SecondaryIconButton icon={"chat-bubble"} label={"Chat"} />
           <SecondaryIconButton icon={"rate-review"} label={"Rate"} />
         </View>
-
         <Packages
           data={[DummyPackage, DummyPackage, DummyPackage]}
           serviceData={params.serviceData}
         />
-
         <Text style={{ marginTop: 8, fontSize: 20, padding: 8 }}>Reviews</Text>
         <Text
           style={{ paddingHorizontal: 16, fontWeight: "bold", fontSize: 15 }}
@@ -346,7 +347,7 @@ const ServiceDetails = () => {
           No Reviews Found
         </Text>
       </View>
-    </View>
+    </Animatable.View>
   );
 };
 

@@ -56,7 +56,7 @@ const FriendsDetails = ({
 
       <TextBox
         name="fullName"
-        placeholder="Enter Your Full Name"
+        placeholder="Enter Full Name"
         value={formData.fullName}
         onValueChange={onFormChange}
       />
