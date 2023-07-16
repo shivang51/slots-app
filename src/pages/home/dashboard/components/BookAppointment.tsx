@@ -306,10 +306,6 @@ const BookAppointment = ({
   useFocusEffect(
     React.useCallback(() => {
       setHomeState((prevState) => ({ ...prevState, hideTabBar: true }));
-
-      return () => {
-        setHomeState((prevState) => ({ ...prevState, hideTabBar: false }));
-      };
     }, []),
   );
   return (
@@ -376,6 +372,7 @@ const calenderTheme: Theme = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "white",
   },
 
   heading: {

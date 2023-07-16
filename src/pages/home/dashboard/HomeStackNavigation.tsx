@@ -14,6 +14,8 @@ import {
   packageSelectionScreenOptions,
   serviceListScreenOptions,
 } from "@pages/home/dashboard/components/ScreenOptions";
+import BackButton from "@components/BackButton";
+import FriendsDetails from "@pages/home/dashboard/components/FriendsDetails";
 
 const HomeStackNavigator = createStackNavigator<HomeDashboardStackParamList>();
 
@@ -22,7 +24,14 @@ const HomeStackNavigation = ({
   navigation,
 }: HomeTabScreenProps<"Home">) => {
   return (
-    <HomeStackNavigator.Navigator>
+    <HomeStackNavigator.Navigator
+      screenOptions={{
+        headerLeft: () => <BackButton onPress={() => navigation.goBack()} />,
+        headerTitleStyle: {
+          fontSize: 22,
+        },
+      }}
+    >
       <HomeStackNavigator.Screen
         options={{ headerShown: false }}
         name={"Dashboard"}
@@ -52,6 +61,11 @@ const HomeStackNavigation = ({
         name={"BookAppointment"}
         component={BookAppointment}
         options={bookAppointmentScreenOptions}
+      />
+
+      <HomeStackNavigator.Screen
+        name={"FriendsDetails"}
+        component={FriendsDetails}
       />
 
       <HomeStackNavigator.Screen

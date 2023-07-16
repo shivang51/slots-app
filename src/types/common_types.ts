@@ -1,3 +1,5 @@
+import { AvailableServices } from "@utils/AvalilableServices";
+
 export interface Tag {
   name: string;
   active: boolean;
@@ -27,7 +29,7 @@ export type Services = IService[];
 
 export interface IService {
   name: string;
-  type: string;
+  typeId: number;
   banner: string;
   address: Address;
   packages: string[];

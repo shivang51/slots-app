@@ -9,7 +9,7 @@ import { SignUpStackNavigation } from "./SignUpIndex";
 import Icon from "react-native-paper/lib/typescript/src/components/Icon";
 
 interface IParams {
-  type: "merchant";
+  userRole: "merchant" | "client";
 }
 
 const Id = () => {
@@ -21,7 +21,11 @@ const Id = () => {
     <View style={styles.container}>
       <View style={{ alignItems: "center", marginBottom: 16 }}>
         <Image
-          source={params && params.type ? Icons.merchant : Icons.person}
+          source={
+            params && params.userRole === "merchant"
+              ? Icons.merchant
+              : Icons.person
+          }
           style={{ width: 100, height: 100 }}
         />
         <Text style={styles.heading1}>Sign Up</Text>

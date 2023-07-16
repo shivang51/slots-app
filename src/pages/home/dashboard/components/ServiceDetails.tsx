@@ -11,12 +11,17 @@ import { Colors } from "@utils/GlobalStyles";
 import { DummyPackage } from "@utils/Dummy";
 import { Image } from "expo-image";
 import { IPackage, IService } from "@/types/common_types";
-import { useNavigation, useRoute } from "@react-navigation/native";
+import {
+  useFocusEffect,
+  useNavigation,
+  useRoute,
+} from "@react-navigation/native";
 import { ScrollView } from "react-native-gesture-handler";
 import Icon from "react-native-vector-icons/Fontisto";
 import * as MaterialIcon from "react-native-vector-icons/MaterialIcons";
 import * as Octicons from "react-native-vector-icons/Octicons";
 import { HomeDashboardStackScreenProps } from "@/types/route_types";
+import { useHomeState } from "@pages/home/HomeState";
 
 const Package = (props: {
   data: IPackage;
@@ -235,6 +240,13 @@ const ServiceDetails = () => {
   const route = useRoute();
 
   const params = route.params as { serviceData: IService };
+
+  const { setHomeState } = useHomeState();
+  useFocusEffect(
+    React.useCallback(() => {
+      setHomeState((prevState) => ({ ...prevState, hideTabBar: true }));
+    }, []),
+  );
   const windowWidth = Dimensions.get("window").width;
 
   const imageWidth = windowWidth * 0.9;
@@ -343,7 +355,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.white,
-    marginBottom: 38,
   },
 
   content: {

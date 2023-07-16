@@ -1,11 +1,18 @@
 import Icons from "@/utils/Icons";
 import { DrawerContentScrollView } from "@react-navigation/drawer";
-import { DrawerActions, useNavigation } from "@react-navigation/native";
+import {
+  DrawerActions,
+  StackActions,
+  useNavigation,
+} from "@react-navigation/native";
 
 import Icon from "react-native-vector-icons/FontAwesome5";
 
 import { Pressable, View, Text, Image, StyleSheet } from "react-native";
-import { HomeDrawerScreenProps } from "@/types/route_types";
+import {
+  HomeDrawerScreenProps,
+  RootStackScreenProps,
+} from "@/types/route_types";
 
 interface IDrawerProps {
   title: string;
@@ -37,7 +44,8 @@ const MDrawerItem = (props: IDrawerProps) => {
 function DrawerWidget(props: any) {
   const navigation =
     useNavigation<HomeDrawerScreenProps<"DrawerRoot">["navigation"]>();
-
+  const rootNavigation =
+    useNavigation<RootStackScreenProps<"Home">["navigation"]>();
   return (
     <DrawerContentScrollView {...props} style={{ padding: 16 }}>
       <View style={styles.header}>
@@ -83,7 +91,7 @@ function DrawerWidget(props: any) {
         />
         <Pressable
           style={{ marginVertical: 8 }}
-          // onPress={() => navigator.dispatch(StackActions.popToTop())}
+          onPress={() => rootNavigation.replace("Landing")}
         >
           <View style={styles.flex}>
             <Image style={styles.icon} source={Icons.logout} />

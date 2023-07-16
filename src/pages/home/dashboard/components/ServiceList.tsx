@@ -2,7 +2,7 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 import React, { useEffect } from "react";
 import { Colors } from "@utils/GlobalStyles";
 import { IService } from "@/types/common_types";
-import { useNavigation } from "@react-navigation/native";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { Image } from "expo-image";
 import * as Octicons from "react-native-vector-icons/Octicons";
 import Icons from "@utils/Icons";
@@ -10,6 +10,7 @@ import TagsLine from "@components/TagsLine";
 import { DummyServices, DummyTags } from "@utils/Dummy";
 import { HomeDashboardStackScreenProps } from "@/types/route_types";
 import { ScrollView } from "react-native-gesture-handler";
+import { useHomeState } from "@pages/home/HomeState";
 
 const Service = (props: { data: IService }) => {
   const navigation =
@@ -71,6 +72,12 @@ const Service = (props: { data: IService }) => {
 };
 
 const ServiceList = () => {
+  const { setHomeState } = useHomeState();
+  useFocusEffect(
+    React.useCallback(() => {
+      setHomeState((prevState) => ({ ...prevState, hideTabBar: false }));
+    }, []),
+  );
   return (
     <View style={styles.container}>
       <TagsLine tags={DummyTags} />

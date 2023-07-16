@@ -19,10 +19,10 @@ const Dashboard = ({ route }: HomeDashboardStackScreenProps<"Dashboard">) => {
 
   useFocusEffect(
     React.useCallback(() => {
-      setHomeState({ isDashboardHome: true });
+      setHomeState((prevState) => ({ ...prevState, isDashboardHome: true }));
 
       return () => {
-        setHomeState({ isDashboardHome: false });
+        setHomeState((prevState) => ({ ...prevState, isDashboardHome: false }));
       };
     }, []),
   );

@@ -1,13 +1,13 @@
 import { StyleSheet, Text, View } from "react-native";
 import React, { useState } from "react";
 import { Colors } from "@utils/GlobalStyles";
-import { useNavigation } from "@react-navigation/native";
-import { SignUpStackNavigation } from "@pages/signup/SignUpIndex";
-import { TabNavigationProp } from "@pages/_home/HomeTabNavigation";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import TextBox from "@components/TextBox";
 import SecondaryButton from "@components/SecondaryButton";
 import PrimaryButton from "@components/PrimaryButton";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
+import { useHomeState } from "@pages/home/HomeState";
+import { HomeDashboardStackScreenProps } from "@/types/route_types";
 
 interface IForm {
   fullName: string;
@@ -20,9 +20,10 @@ interface IForm {
   country: string;
 }
 
-const FriendsDetails = () => {
-  const navigator = useNavigation<TabNavigationProp>();
-
+const FriendsDetails = ({
+  route,
+  navigation,
+}: HomeDashboardStackScreenProps<"FriendsDetails">) => {
   const [formData, setFormData] = useState<IForm>({
     fullName: "",
     countryCode: "+91",
@@ -30,9 +31,16 @@ const FriendsDetails = () => {
     addressLine: "",
     pinCode: "",
     city: "",
-    homeState: "",
+    state: "",
     country: "",
   });
+  const { setHomeState } = useHomeState();
+
+  useFocusEffect(
+    React.useCallback(() => {
+      setHomeState((prevState) => ({ ...prevState, hideTabBar: true }));
+    }, []),
+  );
 
   const [saveInfo, setSaveInfo] = useState(false);
 
@@ -151,7 +159,7 @@ const FriendsDetails = () => {
       <TextBox
         name="state"
         placeholder="State"
-        value={formData.homeState}
+        value={formData.state}
         onValueChange={onFormChange}
       />
 
@@ -172,7 +180,7 @@ const FriendsDetails = () => {
         // style={styles.checkbox}
       />
       <PrimaryButton
-        onPress={() => navigator.navigate("confirm_appointment")}
+        onPress={() => navigation.navigate("ConfirmAppointment")}
         label="Confirm Appointment"
       />
     </View>
