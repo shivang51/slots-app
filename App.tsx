@@ -1,3 +1,4 @@
+import 'expo-dev-client';
 import Index from "@/pages/Index";
 import { StyleSheet, Text, View } from "react-native";
 import * as NavigationBar from "expo-navigation-bar";
