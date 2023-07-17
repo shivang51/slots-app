@@ -1,0 +1,38 @@
+{
+    "services": [
+        {
+            "id": 0,
+            "name": "Saloon",
+            "requires_gender": true
+        },
+        {
+            "id": 1,
+            "name": "Tattoo Parlor",
+            "requires_gender": true
+        },
+        {
+            "id": 2,
+            "name": "Massage Parlour",
+            "requires_gender": true
+        },
+        {
+            "id": 3,
+            "name": "Pet Care",
+            "requires_gender": false
+        }
+    ],
+    "gender_options": [
+        {
+            "id": "0",
+            "type": "male"
+        },
+        {
+            "id": "1",
+            "type": "female"
+        },
+        {
+            "id": "2",
+            "type": "both"
+        }
+    ]
+}
