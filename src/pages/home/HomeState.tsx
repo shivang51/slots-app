@@ -7,8 +7,10 @@ import React, {
 } from "react";
 
 export interface HomeStateInterface {
-  isDashboardHome: boolean;
+  showTabBarHeader: boolean;
   hideTabBar: boolean;
+  userRole: "merchant" | "client";
+  userName: string;
 }
 
 const HomeStateContext = createContext({
@@ -18,7 +20,12 @@ const HomeStateContext = createContext({
 
 const HomeStateProvider = ({
   children,
-  value = { isDashboardHome: true, hideTabBar: false } as HomeStateInterface,
+  value = {
+    showTabBarHeader: true,
+    hideTabBar: false,
+    userRole: "client",
+    userName: "Guest",
+  } as HomeStateInterface,
 }: {
   children: React.ReactNode;
   value?: Partial<HomeStateInterface>;

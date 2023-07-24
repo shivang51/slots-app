@@ -1,22 +1,22 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React, {useCallback, useState} from 'react';
-import Icon from 'react-native-vector-icons/AntDesign';
-import {Colors, GStyles} from '@utils/GlobalStyles';
-import TextBox from '@components/TextBox';
-import PrimaryButton from '@components/PrimaryButton';
-import TextButton from '@components/TextButton';
-import {RootStackScreenProps} from '@/types/route_types';
+import { StyleSheet, Text, View } from "react-native";
+import React, { useCallback, useState } from "react";
+import Icon from "react-native-vector-icons/AntDesign";
+import { Colors, GStyles } from "@utils/GlobalStyles";
+import TextBox from "@components/TextBox";
+import PrimaryButton from "@components/PrimaryButton";
+import TextButton from "@components/TextButton";
+import { RootStackScreenProps } from "@/types/route_types";
 
 interface IForm {
   email: string;
   password: string;
 }
 
-const LogInPage = ({navigation}: RootStackScreenProps<'SignIn'>) => {
-  const [form, setForm] = useState<IForm>({email: '', password: ''});
+const LogInPage = ({ navigation }: RootStackScreenProps<"SignIn">) => {
+  const [form, setForm] = useState<IForm>({ email: "", password: "" });
 
   const setData = (name: string, value: string, _: number) => {
-    setForm({...form, [name]: value});
+    setForm({ ...form, [name]: value });
   };
 
   return (
@@ -24,11 +24,12 @@ const LogInPage = ({navigation}: RootStackScreenProps<'SignIn'>) => {
       <View style={styles.inner_container}>
         <View
           style={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           <Icon name="login" size={32} color={Colors.black} />
           <Text style={styles.heading1}>LOGIN</Text>
         </View>
@@ -50,7 +51,7 @@ const LogInPage = ({navigation}: RootStackScreenProps<'SignIn'>) => {
         </View>
         <TextButton
           onPress={() => {
-            navigation.navigate('ForgotPassword');
+            navigation.navigate("ForgotPassword");
           }}
           label="Forgot Password?"
         />
@@ -65,21 +66,22 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.white,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     padding: 32,
   },
   inner_container: {
     flex: 1,
-    width: '100%',
+    width: "100%",
     // backgroundColor: "red",
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    alignItems: "center",
+    justifyContent: "space-between",
     maxHeight: 400,
   },
   heading1: {
     fontSize: 40,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginLeft: 8,
+    color: "black",
   },
 });

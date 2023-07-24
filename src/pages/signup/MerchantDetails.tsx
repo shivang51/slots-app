@@ -5,11 +5,13 @@ import { Colors } from "@/utils/GlobalStyles";
 import PrimaryButton from "@/components/PrimaryButton";
 import Icon from "react-native-vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
-import { SignUpStackNavigation } from "./SignUpIndex";
 import FilePicker from "@/components/FilePicker";
+import { SignUpStackScreenProps } from "@/types/route_types";
 
-const MerchantDetails = () => {
-  const navigation = useNavigation<SignUpStackNavigation>();
+const MerchantDetails = ({
+  navigation,
+  route,
+}: SignUpStackScreenProps<"MerchantDetails">) => {
   return (
     <View style={styles.container}>
       <View style={{ alignItems: "center", marginBottom: 16 }}>
@@ -17,7 +19,7 @@ const MerchantDetails = () => {
         <Text>Enter the following details to complete signup.</Text>
       </View>
 
-      <Icon name="person-circle-sharp" size={100} />
+      <Icon name="person-circle-sharp" size={100} color={"black"} />
 
       <TextBox
         name="fullName"
@@ -78,7 +80,9 @@ const MerchantDetails = () => {
       </View>
 
       <PrimaryButton
-        onPress={() => navigation.navigate("buisness_details")}
+        onPress={() =>
+          navigation.navigate("BusinessDetails", { token: route.params.token })
+        }
         label="Continue"
         margin_top={8}
       />
@@ -100,10 +104,12 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontWeight: "bold",
     letterSpacing: 0.5,
+    color: "black",
   },
 
   subTitle: {
     fontWeight: "400",
     textAlign: "center",
+    color: "grey",
   },
 });

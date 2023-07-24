@@ -9,6 +9,7 @@ const BackButton = (props: {
 }) => {
   return (
     <IconButton
+      iconColor={"black"}
       icon={Icons.back}
       onPress={props.onPress}
       rippleColor={Colors.lightgray}

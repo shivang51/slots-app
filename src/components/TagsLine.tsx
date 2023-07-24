@@ -20,7 +20,7 @@ const TagsLine = (props: ITagsProps) => {
           ]}
         >
           <Pressable>
-            <Text>{value.name}</Text>
+            <Text style={{ color: "black" }}>{value.name}</Text>
           </Pressable>
         </View>
       ))}
@@ -54,6 +54,7 @@ const styles = StyleSheet.create({
   },
   tag: {
     marginHorizontal: 4,
+    color: "black",
   },
 
   tagActive: {

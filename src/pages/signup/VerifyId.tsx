@@ -16,8 +16,10 @@ import { Colors, GStyles } from "@/utils/GlobalStyles";
 import PrimaryButton from "@/components/PrimaryButton";
 import TextBox from "@/components/TextBox";
 import TextButton from "@/components/TextButton";
-import DropShadow from "react-native-drop-shadow";
-import { SignUpStackNavigation } from "./SignUpIndex";
+import {
+  RootStackScreenProps,
+  SignUpStackScreenProps,
+} from "@/types/route_types";
 
 export const FORGOT_PASSWORD_PAGE_1_ID: string = "/email";
 
@@ -25,21 +27,20 @@ interface IForm {
   otp: string;
 }
 
-interface IParams {
-  userRole: "merchant" | "client";
-}
-
-const VerifyId = () => {
-  const route = useRoute();
-  const params = route.params ? (route.params as IParams) : null;
+const VerifyId = ({
+  route,
+  navigation,
+}: SignUpStackScreenProps<"VerifyId">) => {
+  const params = route.params;
 
   const [form, setForm] = useState<IForm>({ otp: "______" });
 
   const [focusNodes, setFocusNodes] = useState<Array<TextInput | undefined>>(
-    Array.from({ length: 6 }, (_, __) => undefined),
+    Array.from({ length: 6 }, (_, __) => undefined)
   );
 
-  const navigator = useNavigation<SignUpStackNavigation>();
+  const rootNavigation =
+    useNavigation<RootStackScreenProps<"Home">["navigation"]>();
 
   const setFocusNode = (ind: number, input: TextInput | null) => {
     focusNodes[ind] = input ?? undefined;
@@ -63,7 +64,7 @@ const VerifyId = () => {
 
   const onKeyPress = (
     index: number,
-    evt: NativeSyntheticEvent<TextInputKeyPressEventData>,
+    evt: NativeSyntheticEvent<TextInputKeyPressEventData>
   ) => {
     if (evt.nativeEvent.key === "Backspace" && index != 0) {
       focusNodes[index - 1]?.focus();
@@ -120,12 +121,24 @@ const VerifyId = () => {
         <PrimaryButton
           label="Verify"
           onPress={() => {
-            navigator.dispatch(StackActions.popToTop());
-            navigator.navigate(
-              params && params.userRole === "merchant"
-                ? "services_provided"
-                : "sign_up_details",
-            );
+            navigation.dispatch(StackActions.popToTop());
+            if (params && params.userRole === "merchant") {
+              navigation.navigate("ServicesProvided", { token: params.token });
+            } else {
+              rootNavigation.navigate("Home", {
+                userRole: "merchant",
+                routeParams: {
+                  screen: "DrawerRoot",
+                  params: {
+                    screen: "Home",
+                    params: {
+                      screen: "Dashboard",
+                      params: { userId: "merchant101" },
+                    },
+                  },
+                },
+              });
+            }
           }}
         />
       </View>
@@ -147,11 +160,13 @@ const styles = StyleSheet.create({
   heading1: {
     fontSize: 28,
     fontWeight: "bold",
+    color: "black",
   },
   subTitle: {
     fontWeight: "400",
     textAlign: "left",
     marginBottom: 16,
+    color: "grey",
   },
   textboxes: {
     width: "100%",

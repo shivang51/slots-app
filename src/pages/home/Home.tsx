@@ -1,10 +1,11 @@
 import { HomeStateProvider } from "@pages/home/HomeState";
 import HomeDrawerNavigation from "@pages/home/HomeDrawerNavigation";
+import { RootStackScreenProps } from "@/types/route_types";
 
-const Home = () => {
+const Home = (props: RootStackScreenProps<"Home">) => {
   return (
     <HomeStateProvider>
-      <HomeDrawerNavigation />
+      <HomeDrawerNavigation {...props} />
     </HomeStateProvider>
   );
 };

@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     textAlign: "center",
     fontWeight: "500",
+    color: "black",
   },
   googleIcon1: {
     width: 28,

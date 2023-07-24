@@ -5,17 +5,11 @@ import PrimaryButton from "@/components/PrimaryButton";
 import { Colors } from "@/utils/GlobalStyles";
 import Icons from "@/utils/Icons";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import { SignUpStackNavigation } from "./SignUpIndex";
 import Icon from "react-native-paper/lib/typescript/src/components/Icon";
+import { SignUpStackScreenProps } from "@/types/route_types";
 
-interface IParams {
-  userRole: "merchant" | "client";
-}
-
-const Id = () => {
-  const route = useRoute();
-  const params = route.params ? (route.params as IParams) : null;
-  const navigator = useNavigation<SignUpStackNavigation>();
+const Id = ({ route, navigation }: SignUpStackScreenProps<"Id">) => {
+  const params = route.params;
 
   return (
     <View style={styles.container}>
@@ -34,7 +28,12 @@ const Id = () => {
       <TextBox placeholder="Password" password={true} />
       <TextBox placeholder="Confirm Password" password={true} />
       <PrimaryButton
-        onPress={() => navigator.navigate("verify_id", params)}
+        onPress={() =>
+          navigation.navigate("VerifyId", {
+            userRole: params.userRole,
+            token: "my-token",
+          })
+        }
         label="Continue"
       />
     </View>
@@ -54,5 +53,6 @@ const styles = StyleSheet.create({
   heading1: {
     fontSize: 28,
     fontWeight: "bold",
+    color: "black",
   },
 });

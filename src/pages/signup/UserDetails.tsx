@@ -5,7 +5,6 @@ import PrimaryButton from "@/components/PrimaryButton";
 import { Colors } from "@/utils/GlobalStyles";
 import Icons from "@/utils/Icons";
 import { useNavigation } from "@react-navigation/native";
-import { SignUpStackNavigation } from "./SignUpIndex";
 import TextButton from "@/components/TextButton";
 import { black } from "react-native-paper/lib/typescript/src/styles/themes/v2/colors";
 import SecondaryButton from "@/components/SecondaryButton";
@@ -22,7 +21,7 @@ interface IForm {
 }
 
 const UserDetails = () => {
-  const navigator = useNavigation<SignUpStackNavigation>();
+  // const navigator = useNavigation<SignUpStackNavigation>();
 
   const [formData, setFormData] = useState<IForm>({
     fullName: "",
@@ -31,7 +30,7 @@ const UserDetails = () => {
     addressLine: "",
     pinCode: "",
     city: "",
-    homeState: "",
+    state: "",
     country: "",
   });
 
@@ -151,7 +150,7 @@ const UserDetails = () => {
       <TextBox
         name="state"
         placeholder="State"
-        value={formData.homeState}
+        value={formData.state}
         onValueChange={onFormChange}
       />
 
@@ -162,7 +161,7 @@ const UserDetails = () => {
         onValueChange={onFormChange}
       />
       <PrimaryButton
-        onPress={() => navigator.navigate("verify_id")}
+        // onPress={() => navigator.navigate("verify_id")}
         label="Continue"
       />
     </View>

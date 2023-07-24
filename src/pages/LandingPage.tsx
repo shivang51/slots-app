@@ -29,7 +29,10 @@ const LandingPage = ({ navigation }: Props) => {
           <View style={styles.margin_bootom_27}>
             <SecondaryButton
               onPress={() =>
-                navigation.navigate("SignUp", { userRole: "client" })
+                navigation.navigate("SignUp", {
+                  screen: "Id",
+                  params: { userRole: "client" },
+                })
               }
               label="Sign Up"
             />
@@ -38,8 +41,20 @@ const LandingPage = ({ navigation }: Props) => {
             onPress={() =>
               navigation.dispatch(
                 StackActions.replace("Home", {
-                  screen: "DrawerRoot",
-                  params: { userId: "guest" },
+                  userRole: "client",
+                  routeParams: {
+                    screen: "DrawerRoot",
+                    params: {
+                      screen: "Home",
+                      params: {
+                        screen: "Home",
+                        params: {
+                          screen: "Dashboard",
+                          params: { userId: "guest" },
+                        },
+                      },
+                    },
+                  },
                 })
               )
             }
@@ -56,9 +71,12 @@ const LandingPage = ({ navigation }: Props) => {
         </Pressable>
         <TextButton
           onPress={() => {
-            navigation.navigate("SignUp", { userRole: "merchant" });
+            navigation.navigate("SignUp", {
+              screen: "Id",
+              params: { userRole: "merchant" },
+            });
           }}
-          label="Continue as merchant"
+          label="Signup as buisness"
         />
       </View>
     </View>
@@ -98,6 +116,7 @@ const styles = StyleSheet.create({
   subTitle: {
     fontWeight: "400",
     textAlign: "center",
+    color: "black",
   },
   text_button: {
     fontSize: 16,

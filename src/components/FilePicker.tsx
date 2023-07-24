@@ -1,12 +1,17 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-const FilePicker = (props: { buttonLabel: string; placeholder: string }) => {
+const FilePicker = (props: {
+  buttonLabel: string;
+  placeholder: string;
+  style?: any;
+}) => {
   return (
     <View
       style={[
         styles.bannerForYourBusinessParent,
         styles.chooseImageWrapperFlexBox,
+        props.style ?? null,
       ]}
     >
       <Text style={[styles.bannerForYour1, styles.chooseImageTypo]}>

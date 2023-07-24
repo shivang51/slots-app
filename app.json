@@ -1,4 +1,11 @@
 {
   "name": "Slots",
-  "displayName": "Slots"
+  "displayName": "Slots",
+  "expo": {
+    "extra": {
+      "eas": {
+        "projectId": "e70e855e-f190-45c4-adba-94397df70718"
+      }
+    }
+  }
 }

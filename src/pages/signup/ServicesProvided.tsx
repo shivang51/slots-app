@@ -5,7 +5,7 @@ import Icons from "@/utils/Icons";
 import { AvailableServices } from "@/utils/AvalilableServices";
 import PrimaryButton from "@/components/PrimaryButton";
 import { useNavigation } from "@react-navigation/native";
-import { SignUpStackNavigation } from "./SignUpIndex";
+import { SignUpStackScreenProps } from "@/types/route_types";
 
 const AvailableService = (props: {
   id: number;
@@ -27,7 +27,12 @@ const AvailableService = (props: {
           : null
       }
     >
-      <View style={availableServiceStyles.container}>
+      <View
+        style={[
+          availableServiceStyles.container,
+          props.selected ? availableServiceStyles.selected : {},
+        ]}
+      >
         <Image source={props.icon} style={availableServiceStyles.image} />
         <Text
           style={[
@@ -48,9 +53,10 @@ const AvailableService = (props: {
   );
 };
 
-const ServicesProvided = () => {
-  const navigation = useNavigation<SignUpStackNavigation>();
-
+const ServicesProvided = ({
+  route,
+  navigation,
+}: SignUpStackScreenProps<"ServicesProvided">) => {
   const [selectedServices, setSelectedServices] = useState<number[]>([]);
 
   const onServiceSelect = (id: number) => {
@@ -79,7 +85,9 @@ const ServicesProvided = () => {
       </View>
 
       <PrimaryButton
-        onPress={() => navigation.navigate("merchant_details")}
+        onPress={() =>
+          navigation.navigate("MerchantDetails", { token: route.params.token })
+        }
         label="Continue"
       />
     </View>
@@ -107,6 +115,7 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     textAlign: "center",
     letterSpacing: 0.5,
+    color: "black",
   },
 });
 
@@ -115,7 +124,18 @@ const availableServiceStyles = StyleSheet.create({
     padding: 16,
     alignItems: "center",
     maxWidth: 132,
+    backgroundColor: "white",
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: "white",
+    margin: 4,
   },
+
+  selected: {
+    elevation: 1,
+    borderColor: "rgb(240, 240, 240)",
+  },
+
   image: {
     width: 100,
     height: 100,
@@ -124,11 +144,12 @@ const availableServiceStyles = StyleSheet.create({
   title: {
     fontSize: 20,
     textAlign: "center",
+    color: "black",
   },
   selectedBadge: {
     position: "absolute",
-    top: 0,
-    right: -16,
+    top: -10,
+    right: -14,
     width: 36,
     height: 36,
   },

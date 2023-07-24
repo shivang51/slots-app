@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
   heading1: {
     fontSize: 28,
     fontWeight: "bold",
+    color: "black",
   },
   subTitle: {
     fontWeight: "400",

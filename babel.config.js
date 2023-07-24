@@ -1,28 +1,3 @@
-// module.exports = api => {
-//   api.cache(true);
-//   return {
-//     presets: ['module:metro-react-native-babel-preset'],
-//     plugins: [
-//       [
-//         require.resolve('babel-plugin-module-resolver'),
-//         {
-//           root: ['./src'],
-//           extensions: ['.ios.js', '.android.js', '.js', '.ts', '.tsx', '.json'],
-//           alias: {
-//             '@/': 'src/',
-//             '@components/': 'src/components/',
-//             '@globals/': 'src/globals/',
-//             '@icons/': 'assets/icons/',
-//             '@pages/': 'src/pages/',
-//             '@types/': 'src/types/',
-//             '@utils/': 'src/utils/',
-//           },
-//         },
-//       ],
-//       'react-native-reanimated/plugin',
-//     ],
-//   };
-// };
 module.exports = {
   presets: ["module:metro-react-native-babel-preset"],
   plugins: [
@@ -51,6 +26,7 @@ module.exports = {
           "@pages": "./src/pages/",
           "@types": "./src/types/",
           "@utils": "./src/utils/",
+          "@api": "./src/api/",
         },
 
         /// For DEBUGGING PURPOSES BY SHIVANG SHARMA

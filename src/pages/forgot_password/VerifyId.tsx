@@ -35,7 +35,7 @@ const VerifyId = () => {
   const [form, setForm] = useState<IForm>({ otp: "______" });
 
   const [focusNodes, setFocusNodes] = useState<Array<TextInput | undefined>>(
-    Array.from({ length: 6 }, (_, __) => undefined),
+    Array.from({ length: 6 }, (_, __) => undefined)
   );
 
   const navigator = useNavigation<ForgotPasswordStackNavigation>();
@@ -62,7 +62,7 @@ const VerifyId = () => {
 
   const onKeyPress = (
     index: number,
-    evt: NativeSyntheticEvent<TextInputKeyPressEventData>,
+    evt: NativeSyntheticEvent<TextInputKeyPressEventData>
   ) => {
     if (evt.nativeEvent.key === "Backspace" && index != 0) {
       focusNodes[index - 1]?.focus();
@@ -141,11 +141,13 @@ const styles = StyleSheet.create({
   heading1: {
     fontSize: 28,
     fontWeight: "bold",
+    color: "black",
   },
   subTitle: {
     fontWeight: "400",
     textAlign: "left",
     marginBottom: 16,
+    color: "grey",
   },
   textboxes: {
     width: "100%",

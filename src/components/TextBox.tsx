@@ -34,8 +34,16 @@ interface IProps {
 const TextBox = (props: IProps) => {
   const [obscureText, setObscureText] = useState(props.password ?? false);
 
+  const [focused, setFocused] = useState(false);
+
   return (
-    <View style={[styles.container, props.containerStyle]}>
+    <View
+      style={[
+        styles.container,
+        props.containerStyle,
+        !focused ? { borderColor: "grey" } : {},
+      ]}
+    >
       <TextInput
         editable={props.editable ?? true}
         caretHidden={props.carretHidden ?? false}
@@ -52,6 +60,7 @@ const TextBox = (props: IProps) => {
               )
             : null
         }
+        placeholderTextColor={"grey"}
         value={props.value}
         placeholder={props.placeholder}
         secureTextEntry={(props.password ?? false) && obscureText}
@@ -61,6 +70,10 @@ const TextBox = (props: IProps) => {
             ? props.setFocusNode(props.index ?? -1, input)
             : null
         }
+        onFocus={() => {
+          setFocused(true);
+        }}
+        onBlur={() => setFocused(false)}
       />
       {props.password ? (
         <Pressable
@@ -85,6 +98,7 @@ const styles = StyleSheet.create({
     width: "100%",
     padding: 12,
     fontSize: 15,
+    color: "black",
   },
 
   container: {

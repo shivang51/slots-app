@@ -88,3 +88,9 @@ type UserType = "customer" | "service_provider";
 export type TPackageLocation = "home" | "on site" | "both";
 type AppointmentState = "completed" | "upcoming" | "cancelled" | "delayed";
 type TCategory = "men" | "women" | "both";
+
+export interface ITime {
+  hours: string;
+  minutes: string;
+  tod?: "AM" | "PM" | undefined;
+}
